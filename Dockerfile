@@ -18,6 +18,7 @@ FROM nginx:alpine
 
 # Copy the single page website files
 COPY index.html script.js style.css /usr/share/nginx/html/
+COPY static/ /usr/share/nginx/html/static/
 
 # Copy the built documentation to the /docs subdirectory
 # The builder stage works in /docs, so the output is likely in /docs/site

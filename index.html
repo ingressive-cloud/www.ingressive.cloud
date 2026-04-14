@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingressive.cloud | CDN & DNS Provider</title>
+    <title>Ingressive.cloud | Edge Infrastructure for Kubernetes</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="network-bg"></canvas>
 
+    <canvas id="globe-bg"></canvas>
+
+    <!-- ── Header ─────────────────────────────────────────────────────────── -->
     <header>
         <div class="logo">ingressive.cloud</div>
         <nav>
@@ -20,16 +22,244 @@
         </nav>
     </header>
 
-    <main>
-        <div class="hero-content">
-            <h1>Next Generation CDN & DNS</h1>
-            <p>High-performance edge network for modern applications.</p>
-            <div class="actions">
-                <button class="btn btn-primary">Request Access</button>
-                <a href="https://console.ingressive.cloud/login" class="btn btn-secondary">Log In</a>
+    <!-- ── Section 1: Hero ────────────────────────────────────────────────── -->
+    <main id="hero">
+        <div class="hero-split">
+            <div class="hero-content">
+                <h1>The Edge Infrastructure Platform for Kubernetes</h1>
+                <p>CDN, DNS, Access Control and encrypted SDN&nbsp;— without the load&nbsp;balancers, certs, and WAF sprawl.</p>
+                <div class="actions">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjBP1u0hZS1em2fKvpl6JYMsGdRcNwJaCYaOIz1lDMVmm-0w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Request Access</a>
+                    <a href="/docs/" class="btn btn-secondary">View Docs →</a>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <img src="./static/undraw_connected-world_anke.svg" alt="Global connected network illustration" />
             </div>
         </div>
     </main>
+
+    <!-- ── Section 2: Feature Strip ───────────────────────────────────────── -->
+    <section class="section feature-strip">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <h3>Kubernetes Native</h3>
+                    <p>Operator-first design that slots into any cluster.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3>Access Control</h3>
+                    <p>SSO, password gates, and zero-trust per route.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Encrypted SDN</h3>
+                    <p>WireGuard tunnel between your edge and origin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3>Global Network</h3>
+                    <p>Instant config propagation across every edge PoP.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Unified API</h3>
+                    <p>CDN, DNS, and access control under one API surface.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Expert Onboarding</h3>
+                    <p>Managed clusters and white-glove onboarding available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 3: Pain Relief ──────────────────────────────────────────── -->
+    <section class="section section-stripe reveal">
+        <div class="container text-center">
+            <span class="section-eyebrow">Stop the toil</span>
+            <h2>Stop Managing Infrastructure.<br>Start Shipping.</h2>
+            <p class="section-sub">Most teams spend more time managing the edge than building their product. Ingressive handles the plumbing so you don't have to.</p>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                    </div>
+                    <h3>No Load Balancers</h3>
+                    <p>No more provisioning, scaling, or paying for idle LB capacity. Ingressive distributes traffic globally, automatically.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    </div>
+                    <h3>Automatic TLS</h3>
+                    <p>Certificates provisioned and renewed automatically for every domain. Zero toil, zero expiry surprises.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Built-in Bot &amp; DDoS Protection</h3>
+                    <p>Traffic filtering and bot control at the edge. No third-party WAF to bolt on, configure, or maintain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 4: Kubernetes Integration (text-left / illustration-right) -->
+    <section class="section reveal">
+        <div class="container split-section">
+            <div class="split-text">
+                <span class="section-eyebrow">Kubernetes Native</span>
+                <h2>Deep Kubernetes Integration</h2>
+                <p>Deploy Ingressive's operator into your cluster and your services are on the global edge immediately. It replaces your Ingress controller entirely — no YAML sprawl, no cloud load balancer annotations, no manual DNS records.</p>
+                <ul class="feature-list">
+                    <li>Native Kubernetes operator</li>
+                    <li>Drop-in Ingress controller replacement</li>
+                    <li>Automatic service discovery and exposure</li>
+                </ul>
+            </div>
+            <div class="split-illustration">
+                <!-- Download: undraw_container or undraw_server_cluster (search "container" on undraw.co — export in #7657ff) -->
+                <div class="illustration"><img src="./static/undraw_container-ship_t6yx.svg" /></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 5: Access Control (illustration-left / text-right) ──────── -->
+    <section class="section section-alt reveal">
+        <div class="container split-section">
+            <div class="split-illustration">
+                <!-- Download: undraw_secure_login or undraw_two_factor_authentication (search "authentication" on undraw.co) -->
+                <div class="illustration"><img src="./static/undraw_secure-login_m11a.svg" /></div>
+            </div>
+            <div class="split-text">
+                <span class="section-eyebrow">Access Control</span>
+                <h2>Protect Every Route, Effortlessly</h2>
+                <p>Put any service behind SSO or a password gate with a single configuration change. No application code changes required — protection lives at the edge before requests ever reach your origin.</p>
+                <ul class="feature-list">
+                    <li>SSO via OAuth 2.0 / OIDC</li>
+                    <li>Per-route password protection</li>
+                    <li>Zero-trust access model</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 6: Encrypted SDN (text-left / illustration-right) ─────── -->
+    <section class="section reveal">
+        <div class="container split-section">
+            <div class="split-text">
+                <span class="section-eyebrow">WireGuard SDN</span>
+                <h2>End-to-End Encrypted Traffic</h2>
+                <p>Traffic between the Ingressive edge and your origin never travels over the public internet unencrypted. A WireGuard-based SDN forms an always-on private tunnel — your origin requires no exposed inbound ports.</p>
+                <ul class="feature-list">
+                    <li>WireGuard encrypted data plane</li>
+                    <li>No open inbound ports on your origin</li>
+                    <li>Private connectivity to any cloud or on-prem host</li>
+                </ul>
+            </div>
+            <div class="split-illustration">
+                <!-- Download: undraw_connected_world or undraw_data_transfer (search "connected world" on undraw.co) -->
+                <div class="illustration"><img src="./static/undraw_secure-server_lz9x.svg" /></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 7: Global Network (illustration-left / text-right) ──────── -->
+    <section class="section section-alt reveal">
+        <div class="container split-section">
+            <div class="split-illustration">
+                <!-- Download: undraw_around_the_world or undraw_map_re (search "globe" on undraw.co) -->
+                <div class="illustration"><img src="./static/undraw_world_bdnk.svg" /></div>
+            </div>
+            <div class="split-text">
+                <span class="section-eyebrow">Global Edge Network</span>
+                <h2>Instant Global Configuration.<br>Zero Propagation Delays.</h2>
+                <p>Your configuration changes are live across every edge PoP in under a second. No TTL waiting, no cache purge jobs, no stale rules. The network reacts as fast as you move.</p>
+                <ul class="feature-list">
+                    <li>Edge PoPs across all major regions</li>
+                    <li>Sub-second global config propagation</li>
+                    <li>Integrated CDN with instant cache control</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 8: Unified API (text-left / illustration-right) ──────────── -->
+    <section class="section reveal">
+        <div class="container split-section">
+            <div class="split-text">
+                <span class="section-eyebrow">Developer Experience</span>
+                <h2>One API. CDN, DNS, and Access Control.</h2>
+                <p>Every Ingressive capability — routing, caching, DNS, certificates, access control — is available through a single, consistent API. Manage your entire edge from one place, or drive it from your CI pipeline.</p>
+                <ul class="feature-list">
+                    <li>Unified REST API for all services</li>
+                    <li>Kubernetes-native configuration via CRDs</li>
+                    <li>No vendor juggling or separate dashboards</li>
+                </ul>
+            </div>
+            <div class="split-illustration">
+                <!-- Download: undraw_developer_activity or undraw_programming (search "developer" on undraw.co) -->
+                <div class="illustration"><img src="./static/undraw_adjust-settings_6pis.svg" /></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 9: Managed Service (illustration-left / text-right) ──────── -->
+    <section class="section section-alt reveal">
+        <div class="container split-section">
+            <div class="split-illustration">
+                <!-- Download: undraw_team_work or undraw_onboarding (search "team" on undraw.co) -->
+                <div class="illustration"><img src="./static/undraw_team-collaboration_phnf.svg" /></div>
+            </div>
+            <div class="split-text">
+                <span class="section-eyebrow">Full Service</span>
+                <h2>Full-Service, From Day One</h2>
+                <p>Whether you want to self-serve or have us run it for you, Ingressive scales to fit. Our team is available to manage your Kubernetes clusters end-to-end, or guide your engineers through a structured onboarding and migration.</p>
+                <ul class="feature-list">
+                    <li>Managed Kubernetes clusters</li>
+                    <li>Guided onboarding &amp; migration support</li>
+                    <li>Ongoing infrastructure operations available</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 10: CTA Band + Footer ─────────────────────────────────── -->
+    <section class="cta-band reveal">
+        <div class="container text-center">
+            <h2>Ready to get started?</h2>
+            <p>Join the early access programme and get Ingressive running in your cluster.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjBP1u0hZS1em2fKvpl6JYMsGdRcNwJaCYaOIz1lDMVmm-0w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Request Access</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-inner">
+            <div class="logo">ingressive.cloud</div>
+            <nav class="footer-nav">
+                <a href="/docs/">Docs</a>
+                <a href="https://console.ingressive.cloud/login">Log In</a>
+                <a href="#">Privacy</a>
+            </nav>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
