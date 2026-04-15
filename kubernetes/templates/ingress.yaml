@@ -1,30 +1,48 @@
-{{- if .Values.ingress.enabled }}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+{{- if .Values.httpRoute.enabled }}
+---
+# HTTPS route — pins to the per-hostname HTTPS listener on the shared Gateway
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   name: {{ include "ingressive-www.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "ingressive-www.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
 spec:
-  ingressClassName: {{ .Values.ingress.className }}
-  {{- if .Values.ingress.tls }}
-  tls:
-    {{- toYaml .Values.ingress.tls | nindent 4 }}
-  {{- end }}
+  parentRefs:
+    - name: {{ .Values.httpRoute.gatewayName }}
+      namespace: {{ .Values.httpRoute.gatewayNamespace }}
+      sectionName: {{ .Values.httpRoute.sectionName }}
+  hostnames:
+    - ingressive.cloud
   rules:
-    - host: {{ .Values.ingress.host }}
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "ingressive-www.fullname" . }}
-                port:
-                  number: {{ .Values.service.port }}
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: {{ include "ingressive-www.fullname" . }}
+          port: {{ .Values.service.port }}
+---
+# HTTP redirect route — pins to port-80 listener and issues 301 → HTTPS
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ include "ingressive-www.fullname" . }}-http-redirect
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "ingressive-www.labels" . | nindent 4 }}
+spec:
+  parentRefs:
+    - name: {{ .Values.httpRoute.gatewayName }}
+      namespace: {{ .Values.httpRoute.gatewayNamespace }}
+      sectionName: http
+  hostnames:
+    - ingressive.cloud
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301
 {{- end }}

@@ -13,8 +13,8 @@ WORKDIR /docs/docs
 # Assuming 'site' is the default output directory for Zensical
 RUN zensical build
 
-# Stage 2: Serve with Nginx
-FROM nginx:alpine
+# Stage 2: Serve with Nginx (unprivileged — listens on 8080, runs as uid 101)
+FROM nginxinc/nginx-unprivileged:alpine
 
 # Copy the single page website files
 COPY index.html script.js style.css /usr/share/nginx/html/
@@ -24,7 +24,7 @@ COPY static/ /usr/share/nginx/html/static/
 # The builder stage works in /docs, so the output is likely in /docs/site
 COPY --from=docs-builder /docs/docs/site /usr/share/nginx/html/docs
 
-# Expose port 80
-EXPOSE 80
+# Expose port 8080
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]

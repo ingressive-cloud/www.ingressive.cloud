@@ -27,18 +27,14 @@ resources:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
-ingress:
+httpRoute:
   enabled: true
-  className: "nginx"
-  annotations: {}
-    # cert-manager.io/cluster-issuer: letsencrypt-prod
-  host: ingressive.cloud
-  tls: []
-  # - secretName: ingressive-cloud-tls
-  #   hosts:
-  #     - ingressive.cloud
+  gatewayName: main
+  gatewayNamespace: infra
+  # sectionName must match the HTTPS listener name on the shared Gateway
+  sectionName: https-ingressive-cloud
 
 autoscaling:
   enabled: true
