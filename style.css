@@ -63,6 +63,19 @@ header {
     letter-spacing: -0.02em;
     color: var(--text-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    max-width: 28px;
+    max-height: 28px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
 }
 
 header nav {
