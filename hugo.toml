@@ -1,0 +1,30 @@
+baseURL = "https://www.ingressive.cloud/"
+languageCode = "en-us"
+title = "Ingressive.cloud"
+
+[params]
+  description = "Edge Infrastructure for Kubernetes"
+  consoleURL = "https://console.ingressive.cloud/login"
+  requestAccessURL = "https://docs.google.com/forms/d/e/1FAIpQLSfjBP1u0hZS1em2fKvpl6JYMsGdRcNwJaCYaOIz1lDMVmm-0w/viewform"
+
+[menu]
+  [[menu.main]]
+    name = "Docs"
+    url  = "/docs/"
+    weight = 10
+  [[menu.main]]
+    name = "Log In"
+    url  = "https://console.ingressive.cloud/login"
+    weight = 20
+
+disableKinds = ["taxonomy", "term"]
+
+[outputs]
+  home = ["HTML", "JSON"]
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true

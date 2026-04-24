@@ -1,0 +1,39 @@
+{{ $currentPage := . }}
+{{ with .Site.GetPage "/docs" }}
+<nav class="docs-sidebar-nav" aria-label="Documentation navigation">
+    <a href="{{ .Permalink }}" class="docs-nav-home{{ if eq $currentPage . }} active{{ end }}">
+        {{ with .Params.icon }}<i data-lucide="{{ . }}" class="docs-nav-icon" aria-hidden="true"></i>{{ end }}
+        Docs home
+    </a>
+    <ul class="docs-nav-list">
+        {{ range .Pages }}
+            {{ if .IsSection }}
+                {{ $section := . }}
+                <li class="docs-nav-section">
+                    <a href="{{ .Permalink }}" class="docs-nav-section-label{{ if or (eq $currentPage .) ($currentPage.IsDescendant .) }} active{{ end }}">
+                        {{ with .Params.icon }}<i data-lucide="{{ . }}" class="docs-nav-icon" aria-hidden="true"></i>{{ end }}
+                        {{ .Title }}
+                    </a>
+                    <ul class="docs-nav-sub">
+                        {{ range .RegularPages }}
+                        <li>
+                            <a href="{{ .Permalink }}" class="{{ if eq $currentPage . }}active{{ end }}">
+                                {{ with .Params.icon }}<i data-lucide="{{ . }}" class="docs-nav-icon" aria-hidden="true"></i>{{ end }}
+                                {{ .Title }}
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ else }}
+                <li>
+                    <a href="{{ .Permalink }}" class="{{ if eq $currentPage . }}active{{ end }}">
+                        {{ with .Params.icon }}<i data-lucide="{{ . }}" class="docs-nav-icon" aria-hidden="true"></i>{{ end }}
+                        {{ .Title }}
+                    </a>
+                </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+</nav>
+{{ end }}

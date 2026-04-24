@@ -1,0 +1,11 @@
+{{ define "main" }}
+    {{ if .Params.icon }}
+    <div class="docs-title-row">
+        <i data-lucide="{{ .Params.icon }}" class="docs-page-icon" aria-hidden="true"></i>
+        <h1>{{ .Title }}</h1>
+    </div>
+    {{ .Content | replaceRE "<h1[^>]*>.*?</h1>" "" | safeHTML }}
+    {{ else }}
+    {{ .Content }}
+    {{ end }}
+{{ end }}

@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingressive.cloud | Edge Infrastructure for Kubernetes</title>
-    <link rel="icon" type="image/png" href="/static/icon.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+{{ define "title" }}{{ .Site.Title }} | Edge Infrastructure for Kubernetes{{ end }}
+{{ define "styles" }}<link rel="stylesheet" href="/style.css">{{ end }}
+{{ define "scripts" }}<script src="/script.js"></script>{{ end }}
 
+{{ define "body" }}
     <canvas id="globe-bg"></canvas>
 
     <!-- ── Header ─────────────────────────────────────────────────────────── -->
-    <header>
-        <div class="logo">
-            <img src="/static/icon.png" alt="Ingressive logo" class="logo-icon">
-            ingressive.cloud
-        </div>
-        <nav>
-            <a href="/docs/">Docs</a>
-            <a href="https://console.ingressive.cloud/login" class="login-link">Log In</a>
-        </nav>
-    </header>
+    {{ partial "header.html" . }}
 
     <!-- ── Section 1: Hero ────────────────────────────────────────────────── -->
     <main id="hero">
@@ -33,12 +15,12 @@
                 <h1>The Edge Infrastructure Platform for Kubernetes</h1>
                 <p>Ingressive gives you superpowers; right at the edge. Just&nbsp;tell us where to send traffic. We handle everything else.</p>
                 <div class="actions">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjBP1u0hZS1em2fKvpl6JYMsGdRcNwJaCYaOIz1lDMVmm-0w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Request Access</a>
+                    <a href="{{ .Site.Params.requestAccessURL }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Request Access</a>
                     <a href="/docs/" class="btn btn-secondary">View Docs →</a>
                 </div>
             </div>
             <div class="hero-illustration">
-                <img src="./static/undraw_connected-world_anke.svg" alt="Global connected network illustration" />
+                <img src="/static/undraw_connected-world_anke.svg" alt="Global connected network illustration" />
             </div>
         </div>
     </main>
@@ -125,13 +107,13 @@
         </div>
     </section>
 
-    <!-- ── Section 4: Kubernetes Integration (text-left / illustration-right) -->
+    <!-- ── Section 4: Kubernetes Integration ──────────────────────────────── -->
     <section class="section reveal">
         <div class="container split-section">
             <div class="split-text">
                 <span class="section-eyebrow">Kubernetes Native</span>
                 <h2>Deep Kubernetes Integration</h2>
-                <p>Deploy Ingressive's operator into your cluster and your services are on the global edge immediately. It replaces your Ingress controller entirely. No cert manager, no cloud load balancer, no manual DNS records.</p>
+                <p>Deploy Ingressive's operator into your cluster and your services are on the global edge immediately. It replaces your Ingress controller entirely — no cert manager, no cloud load balancer annotations, no manual DNS records.</p>
                 <ul class="feature-list">
                     <li>Native Kubernetes operator</li>
                     <li>Drop-in Ingress controller replacement</li>
@@ -139,18 +121,16 @@
                 </ul>
             </div>
             <div class="split-illustration">
-                <!-- Download: undraw_container or undraw_server_cluster (search "container" on undraw.co — export in #7657ff) -->
-                <div class="illustration"><img src="./static/undraw_container-ship_t6yx.svg" /></div>
+                <div class="illustration"><img src="/static/undraw_container-ship_t6yx.svg" /></div>
             </div>
         </div>
     </section>
 
-    <!-- ── Section 5: Access Control (illustration-left / text-right) ──────── -->
+    <!-- ── Section 5: Access Control ──────────────────────────────────────── -->
     <section class="section section-alt reveal">
         <div class="container split-section">
             <div class="split-illustration">
-                <!-- Download: undraw_secure_login or undraw_two_factor_authentication (search "authentication" on undraw.co) -->
-                <div class="illustration"><img src="./static/undraw_secure-login_m11a.svg" /></div>
+                <div class="illustration"><img src="/static/undraw_secure-login_m11a.svg" /></div>
             </div>
             <div class="split-text">
                 <span class="section-eyebrow">Access Control</span>
@@ -165,7 +145,7 @@
         </div>
     </section>
 
-    <!-- ── Section 6: Encrypted SDN (text-left / illustration-right) ─────── -->
+    <!-- ── Section 6: Encrypted SDN ───────────────────────────────────────── -->
     <section class="section reveal">
         <div class="container split-section">
             <div class="split-text">
@@ -179,18 +159,16 @@
                 </ul>
             </div>
             <div class="split-illustration">
-                <!-- Download: undraw_connected_world or undraw_data_transfer (search "connected world" on undraw.co) -->
-                <div class="illustration"><img src="./static/undraw_secure-server_lz9x.svg" /></div>
+                <div class="illustration"><img src="/static/undraw_secure-server_lz9x.svg" /></div>
             </div>
         </div>
     </section>
 
-    <!-- ── Section 7: Global Network (illustration-left / text-right) ──────── -->
+    <!-- ── Section 7: Global Network ──────────────────────────────────────── -->
     <section class="section section-alt reveal">
         <div class="container split-section">
             <div class="split-illustration">
-                <!-- Download: undraw_around_the_world or undraw_map_re (search "globe" on undraw.co) -->
-                <div class="illustration"><img src="./static/undraw_world_bdnk.svg" /></div>
+                <div class="illustration"><img src="/static/undraw_world_bdnk.svg" /></div>
             </div>
             <div class="split-text">
                 <span class="section-eyebrow">Global Edge Network</span>
@@ -206,7 +184,7 @@
         </div>
     </section>
 
-    <!-- ── Section 8: Unified API (text-left / illustration-right) ──────────── -->
+    <!-- ── Section 8: Unified API ─────────────────────────────────────────── -->
     <section class="section reveal">
         <div class="container split-section">
             <div class="split-text">
@@ -220,18 +198,16 @@
                 </ul>
             </div>
             <div class="split-illustration">
-                <!-- Download: undraw_developer_activity or undraw_programming (search "developer" on undraw.co) -->
-                <div class="illustration"><img src="./static/undraw_adjust-settings_6pis.svg" /></div>
+                <div class="illustration"><img src="/static/undraw_adjust-settings_6pis.svg" /></div>
             </div>
         </div>
     </section>
 
-    <!-- ── Section 9: Managed Service (illustration-left / text-right) ──────── -->
+    <!-- ── Section 9: Managed Service ────────────────────────────────────── -->
     <section class="section section-alt reveal">
         <div class="container split-section">
             <div class="split-illustration">
-                <!-- Download: undraw_team_work or undraw_onboarding (search "team" on undraw.co) -->
-                <div class="illustration"><img src="./static/undraw_team-collaboration_phnf.svg" /></div>
+                <div class="illustration"><img src="/static/undraw_team-collaboration_phnf.svg" /></div>
             </div>
             <div class="split-text">
                 <span class="section-eyebrow">Full Service</span>
@@ -246,29 +222,14 @@
         </div>
     </section>
 
-    <!-- ── Section 10: CTA Band + Footer ─────────────────────────────────── -->
+    <!-- ── Section 10: CTA Band ───────────────────────────────────────────── -->
     <section class="cta-band reveal">
         <div class="container text-center">
             <h2>Ready to get started?</h2>
             <p>Join the early access programme and get Ingressive running in your cluster.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjBP1u0hZS1em2fKvpl6JYMsGdRcNwJaCYaOIz1lDMVmm-0w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Request Access</a>
+            <a href="{{ .Site.Params.requestAccessURL }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Request Access</a>
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-inner">
-            <div class="logo">
-                <img src="/static/icon.png" alt="Ingressive logo" class="logo-icon">
-                ingressive.cloud
-            </div>
-            <nav class="footer-nav">
-                <a href="/docs/">Docs</a>
-                <a href="https://console.ingressive.cloud/login">Log In</a>
-                <a href="#">Privacy</a>
-            </nav>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    {{ partial "footer.html" . }}
+{{ end }}
