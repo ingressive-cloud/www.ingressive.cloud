@@ -10,7 +10,9 @@ metadata:
     {{- include "ingressive-www.labels" . | nindent 4 }}
 spec:
   parentRefs:
-    - name: {{ .Values.httpRoute.gatewayName }}
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: {{ .Values.httpRoute.gatewayName }}
       namespace: {{ .Values.httpRoute.gatewayNamespace }}
       sectionName: {{ .Values.httpRoute.sectionName }}
   hostnames:
@@ -21,7 +23,9 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: {{ include "ingressive-www.fullname" . }}
+        - group: ""
+          kind: Service
+          name: {{ include "ingressive-www.fullname" . }}
           port: {{ .Values.service.port }}
 ---
 # HTTP redirect route — pins to port-80 listener and issues 301 → HTTPS
@@ -34,7 +38,9 @@ metadata:
     {{- include "ingressive-www.labels" . | nindent 4 }}
 spec:
   parentRefs:
-    - name: {{ .Values.httpRoute.gatewayName }}
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: {{ .Values.httpRoute.gatewayName }}
       namespace: {{ .Values.httpRoute.gatewayNamespace }}
       sectionName: http
   hostnames:
@@ -45,4 +51,8 @@ spec:
           requestRedirect:
             scheme: https
             statusCode: 301
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
 {{- end }}
