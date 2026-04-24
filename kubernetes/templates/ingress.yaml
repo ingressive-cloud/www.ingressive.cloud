@@ -27,6 +27,7 @@ spec:
           kind: Service
           name: {{ include "ingressive-www.fullname" . }}
           port: {{ .Values.service.port }}
+          weight: 1
 ---
 # HTTP redirect route — pins to port-80 listener and issues 301 → HTTPS
 apiVersion: gateway.networking.k8s.io/v1
