@@ -24,10 +24,10 @@ Ingressive Access Control allows you to put password or SSO protection in front 
 - **Admin Dashboards** - You can block the public from accessing `/admin/` while letting them browse the public parts of your site. Perfect for off the shelf CMSes.
 
 ## Setting Up
-Ingressive allows you to set up a single Shield configuration, then associate it with as many Sites and Locations as you wish. This allows you to standardise the configuration across your applications.
+Ingressive allows you to set up a multiple Shield configurations, then in turn associate each with as many Sites and Locations as you wish. This allows you to standardise the configuration across your applications.
 
 ### Getting Started 
 1. In the Ingressive Console, click [Shield](https://console.ingressive.cloud/shield).
 1. Click "Create Shield Config"
 1. Select your protection type: `JavaScript`, `Captcha` or `Block`.
-1. Set up Access Control. Currently, only shared passwords are supported. Please 
+1. Set up Access Control. Currently, only shared passwords are supported. Please {{< request-access "tell us about your project" >}} and we will add what suits your needs.

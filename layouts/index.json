@@ -1,4 +1,6 @@
-{{- $pages := where .Site.RegularPages "Section" "docs" -}}
+{{- $docs := where .Site.RegularPages "Section" "docs" -}}
+{{- $posts := where .Site.RegularPages "Section" "posts" -}}
+{{- $pages := $docs | append $posts -}}
 [
   {{- range $i, $p := $pages -}}
   {{- if $i }},{{ end }}

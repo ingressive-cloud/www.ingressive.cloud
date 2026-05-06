@@ -92,7 +92,25 @@ header nav a:hover { color: var(--text-color); }
     justify-content: center;
     color: #fff;
     box-shadow: 0 4px 20px var(--accent-glow);
+    transition: background 0.2s;
 }
+
+.docs-menu-toggle .icon-close { display: none; }
+.docs-menu-toggle[aria-expanded="true"] .icon-menu { display: none; }
+.docs-menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+.docs-menu-toggle[aria-expanded="true"] { background: var(--accent-hover); }
+
+.docs-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 140;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.docs-sidebar-backdrop.is-open { display: block; }
 
 /* ── Layout ──────────────────────────────────────────────────────────────── */
 .docs-layout {
@@ -414,4 +432,143 @@ footer {
     .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
 }
 
+/* ── Blog / Posts ────────────────────────────────────────────────────────── */
+.posts-layout {
+    padding-top: var(--header-height);
+    min-height: 100vh;
+}
+
+.posts-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.posts-header { margin-bottom: 2.5rem; }
+
+.posts-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: linear-gradient(140deg, #ffffff 35%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.posts-header-desc { color: var(--text-muted); }
+
+.posts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.post-card {
+    display: block;
+    padding: 1.5rem 1.75rem;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.post-card:hover {
+    border-color: rgba(118, 87, 255, 0.5);
+    background: rgba(118, 87, 255, 0.07);
+}
+
+.post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.post-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.45rem;
+    line-height: 1.3;
+}
+
+.post-card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.post-card-read {
+    font-size: 0.825rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Single post */
+.posts-article {
+    max-width: 720px;
+}
+
+.post-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+}
+
+.post-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    background: linear-gradient(140deg, #ffffff 35%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+}
+
+.post-lead {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+/* Tags (used in both list and single) */
+.post-tags, .post-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.post-tag {
+    background: rgba(118, 87, 255, 0.15);
+    color: var(--accent-color);
+    border-radius: 4px;
+    padding: 0.1em 0.5em;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+/* Reuse docs-article typography for post body */
+.posts-article { }
+
+@media (max-width: 768px) {
+    .posts-main { padding: 2rem 1.25rem; }
+    .post-header h1 { font-size: 1.75rem; }
+}
 

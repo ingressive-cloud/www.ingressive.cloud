@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="posts-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="posts-header-desc">{{ . }}</p>{{ end }}
+</div>
+
+<div class="posts-grid">
+    {{ range .Pages.ByDate.Reverse }}
+    <a href="{{ .Permalink }}" class="post-card">
+        <div class="post-card-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ with .Params.tags }}
+            <span class="post-card-tags">
+                {{ range . }}<span class="post-tag">{{ . }}</span>{{ end }}
+            </span>
+            {{ end }}
+        </div>
+        <h2 class="post-card-title">{{ .Title }}</h2>
+        <p class="post-card-desc">{{ .Description | default (.Summary | plainify | truncate 160 "…") }}</p>
+        <span class="post-card-read">Read more →</span>
+    </a>
+    {{ else }}
+    <p style="color: var(--text-muted); padding: 2rem 0;">No posts yet. Check back soon.</p>
+    {{ end }}
+</div>
+{{ end }}
