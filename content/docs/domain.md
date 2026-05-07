@@ -5,7 +5,14 @@ icon: "globe"
 ---
 
 # Domains
-A **domain** in Ingressive Cloud refers to a top-level domain name (e.g., `example.com`) that you own and want to accelerate using our content delivery network (CDN) services. By adding a domain to Ingressive Cloud, you enable our platform to manage DNS settings and route traffic through our global network of edge servers, optimizing content delivery for your users.
+A **domain** in Ingressive Cloud refers to a top-level domain name (e.g., `example.com`) that you own and want to handle traffic for using Ingressive. By adding a domain to Ingressive Cloud, you enable our platform to manage DNS settings and route traffic through our global network of edge servers, optimizing content delivery for your users.
+
+## About Domains
+Adding a domain to Ingressive is highly recommended. This lets Ingressive handle every step of Ingress, from DNS to certificates. If you don't want to bring your primary domain just yet, consider the following:
+- Bring `dev.yourcompany.com` or `ingressive.yourcompany.com`
+- Buy a domain like `secretprojectalpha.dev` and add that. 
+
+Ingressive can work with external domains. You will need some tooling around making sure the correct record is pointed to `edge.ingressive.cloud` before creating Ingress objects in Kubernetes. 
 
 ## Creating a Domain
 To create a domain in Ingressive Cloud:
