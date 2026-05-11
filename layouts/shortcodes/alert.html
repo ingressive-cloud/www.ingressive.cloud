@@ -1,0 +1,23 @@
+{{- $rawIcon := .Get 0 | default "info" -}}
+
+{{- $iconMap := dict
+    "fire"   "flame"
+    "edit"   "pencil"
+-}}
+{{- $typeMap := dict
+    "flame"  "warning"
+    "fire"   "warning"
+    "search" "info"
+    "pencil" "tip"
+    "edit"   "tip"
+-}}
+
+{{- $icon := index $iconMap $rawIcon | default $rawIcon -}}
+{{- $type := index $typeMap $rawIcon | default "info" -}}
+
+<div class="callout callout-{{ $type }}">
+    <i data-lucide="{{ $icon }}" class="callout-icon" aria-hidden="true"></i>
+    <div class="callout-body">
+        <div class="callout-content">{{ .Inner | markdownify }}</div>
+    </div>
+</div>

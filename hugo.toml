@@ -21,7 +21,10 @@ title = "Ingressive.cloud"
     url  = "https://console.ingressive.cloud/login"
     weight = 20
 
-disableKinds = ["taxonomy", "term"]
+disableKinds = ["taxonomy"]
+
+[taxonomies]
+  tag = "tags"
 
 [outputs]
   home = ["HTML", "JSON"]
@@ -32,3 +35,7 @@ disableKinds = ["taxonomy", "term"]
     noClasses = false
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false

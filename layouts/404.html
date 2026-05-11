@@ -1,0 +1,28 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="/docs.css">
+{{ end }}
+
+{{ define "bodyAttrs" }} class="docs-body"{{ end }}
+
+{{ define "body" }}
+<canvas id="globe-bg"></canvas>
+{{ partial "header.html" . }}
+
+<div class="not-found-wrap">
+    <div class="not-found-code">404</div>
+    <h1 class="not-found-title">Page not found</h1>
+    <p class="not-found-desc">The page you're looking for doesn't exist or may have been moved.</p>
+    <div class="not-found-actions">
+        <a href="/docs/" class="not-found-btn-primary">Go to Docs</a>
+        <a href="/" class="not-found-btn-secondary">Home</a>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ end }}
+
+{{ define "scripts" }}
+<script src="/script.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+{{ end }}

@@ -16,10 +16,6 @@
     <canvas id="globe-bg"></canvas>
     {{ partial "header.html" . }}
 
-    <button class="docs-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
     <div class="docs-sidebar-backdrop" id="docs-sidebar-backdrop"></div>
 
     <div class="docs-layout">
@@ -27,9 +23,26 @@
             {{ partial "docs-nav.html" . }}
         </aside>
         <main class="docs-main">
-            <article class="docs-article">
-                {{ block "main" . }}{{ end }}
-            </article>
+            <div class="docs-breadcrumb-bar">
+                <button class="docs-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                {{ partial "breadcrumbs.html" . }}
+            </div>
+            <div class="docs-main-body">
+                <div class="docs-content">
+                    <article class="docs-article">
+                        {{ block "main" . }}{{ end }}
+                    </article>
+                </div>
+                {{ if .TableOfContents }}
+                <aside class="docs-toc" aria-label="On this page">
+                    <p class="docs-toc-title">On this page</p>
+                    {{ .TableOfContents }}
+                </aside>
+                {{ end }}
+            </div>
         </main>
     </div>
 
@@ -54,6 +67,23 @@
         });
 
         backdrop.addEventListener('click', closeSidebar);
+    </script>
+    <script>
+        // TOC scroll spy
+        const tocLinks = document.querySelectorAll('.docs-toc a');
+        if (tocLinks.length > 0) {
+            const headings = Array.from(tocLinks).map(l => document.getElementById(l.getAttribute('href').slice(1))).filter(Boolean);
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        const active = document.querySelector(`.docs-toc a[href="#${entry.target.id}"]`);
+                        if (active) active.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+            headings.forEach(h => observer.observe(h));
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
     <script src="/docs-search.js"></script>

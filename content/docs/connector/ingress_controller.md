@@ -9,7 +9,7 @@ The Ingressive Controller is a Kubernetes Ingress Controller that uses Ingressiv
 ## Getting Started
 To set up an Ingress Controller;
 1. Open the [Ingressive Console](https://console.ingressive.cloud)
-1. If you haven't, adding a [domain](../domain.md) is highly recommended. 
+1. If you haven't, adding a [domain](../../domain) is highly recommended. 
 1. Click `Connectors` in the sidebar. 
 1. Click New.
 1. Give the new Controller a name. Something like, `prod`, `us-west-1`, or `john-laptop`.

@@ -1,5 +1,6 @@
-{{- $docs := where .Site.RegularPages "Section" "docs" -}}
-{{- $posts := where .Site.RegularPages "Section" "posts" -}}
+{{- $allPages := where .Site.Pages "Kind" "in" (slice "page" "section") -}}
+{{- $docs := where $allPages "Section" "docs" -}}
+{{- $posts := where $allPages "Section" "posts" -}}
 {{- $pages := $docs | append $posts -}}
 [
   {{- range $i, $p := $pages -}}

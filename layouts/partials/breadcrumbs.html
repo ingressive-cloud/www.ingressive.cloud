@@ -1,0 +1,16 @@
+{{- $page := . -}}
+{{- $ancestors := .Ancestors -}}
+{{- $n := len $ancestors -}}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+    {{- if gt $n 0 -}}
+    {{- range seq $n -}}
+    {{- $idx := sub $n . -}}
+    {{- $anc := index $ancestors $idx -}}
+    {{- if not $anc.IsHome -}}
+    <a href="{{ $anc.RelPermalink }}" class="breadcrumb-link">{{ $anc.Title }}</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
+    <span class="breadcrumb-current" aria-current="page">{{ $page.Title }}</span>
+</nav>

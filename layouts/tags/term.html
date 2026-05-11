@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="posts-header">
     <h1>{{ .Title }}</h1>
-    {{ with .Description }}<p class="posts-header-desc">{{ . }}</p>{{ end }}
+    <p class="posts-header-desc">{{ len .Pages }} post{{ if ne (len .Pages) 1 }}s{{ end }} tagged with this.</p>
 </div>
 
 <div class="posts-grid">
@@ -19,8 +19,6 @@
         <p class="post-card-desc">{{ .Description | default (.Summary | plainify | truncate 160 "…") }}</p>
         <span class="post-card-read">Read more →</span>
     </a>
-    {{ else }}
-    <p style="color: var(--text-muted); padding: 2rem 0;">No posts yet. Check back soon.</p>
     {{ end }}
 </div>
 {{ end }}

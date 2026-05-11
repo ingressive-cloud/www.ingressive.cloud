@@ -9,6 +9,7 @@ RUN hugo --minify
 FROM nginxinc/nginx-unprivileged:alpine
 
 COPY --from=builder /site/public /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 8080
 EXPOSE 8080

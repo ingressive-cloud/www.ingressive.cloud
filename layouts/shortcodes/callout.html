@@ -1,0 +1,21 @@
+{{- $type := .Get "type" | default "info" -}}
+{{- $customIcon := .Get "icon" -}}
+{{- $customTitle := .Get "title" -}}
+
+{{- $defaults := dict
+    "tip"     (dict "icon" "lightbulb"      "label" "Tip")
+    "info"    (dict "icon" "info"           "label" "Note")
+    "warning" (dict "icon" "triangle-alert" "label" "Warning")
+-}}
+
+{{- $cfg := index $defaults $type | default (index $defaults "info") -}}
+{{- $icon  := $customIcon  | default (index $cfg "icon") -}}
+{{- $label := $customTitle | default (index $cfg "label") -}}
+
+<div class="callout callout-{{ $type }}">
+    <i data-lucide="{{ $icon }}" class="callout-icon" aria-hidden="true"></i>
+    <div class="callout-body">
+        <p class="callout-label">{{ $label }}</p>
+        <div class="callout-content">{{ .Inner | markdownify }}</div>
+    </div>
+</div>
