@@ -1,47 +1,68 @@
 'use strict';
 
 (function () {
-    const trigger  = document.getElementById('search-trigger');
-    const box      = document.getElementById('search-box');
-    const input    = document.getElementById('search-input');
-    const closeBtn = document.getElementById('search-close');
-    const results  = document.getElementById('search-results');
+    const trigger = document.getElementById('search-trigger');
+    const overlay = document.getElementById('search-overlay');
+    const backdrop = document.getElementById('search-overlay-backdrop');
+    const panel = overlay ? overlay.querySelector('.search-panel') : null;
+    const input = document.getElementById('search-input');
+    const results = document.getElementById('search-results');
 
-    if (!trigger) return;
+    if (!trigger || !overlay || !input || !results) return;
 
     let fuse = null;
     let indexLoaded = false;
     let selectedIndex = -1;
+    let previouslyFocused = null;
 
     // ── Open / close ──────────────────────────────────────────────────────
 
     function openSearch() {
-        box.classList.add('is-open');
-        box.setAttribute('aria-hidden', 'false');
-        trigger.setAttribute('aria-expanded', 'true');
-        input.focus();
+        if (overlay.classList.contains('is-open')) return;
+        previouslyFocused = document.activeElement;
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // Defer focus to allow the transition to start
+        requestAnimationFrame(() => input.focus());
         loadIndex();
     }
 
     function closeSearch() {
-        box.classList.remove('is-open');
-        box.setAttribute('aria-hidden', 'true');
-        trigger.setAttribute('aria-expanded', 'false');
+        if (!overlay.classList.contains('is-open')) return;
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
         input.value = '';
         hideResults();
+        if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+            previouslyFocused.focus();
+        }
     }
 
     trigger.addEventListener('click', openSearch);
-    closeBtn.addEventListener('click', closeSearch);
 
-    // Close on Escape
+    // Close on backdrop click (but not on clicks inside the panel)
+    backdrop.addEventListener('click', closeSearch);
+    if (panel) {
+        panel.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    // Global keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeSearch();
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!document.getElementById('header-search').contains(e.target)) {
+        // Cmd/Ctrl+K to open
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            if (overlay.classList.contains('is-open')) {
+                closeSearch();
+            } else {
+                openSearch();
+            }
+            return;
+        }
+        // Esc closes
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+            e.preventDefault();
             closeSearch();
         }
     });
@@ -51,11 +72,11 @@
     function loadIndex() {
         if (indexLoaded) return;
         fetch('/index.json')
-            .then(r => r.json())
-            .then(data => {
+            .then((r) => r.json())
+            .then((data) => {
                 fuse = new Fuse(data, {
                     keys: [
-                        { name: 'title',   weight: 0.6 },
+                        { name: 'title', weight: 0.6 },
                         { name: 'content', weight: 0.4 },
                     ],
                     threshold: 0.35,
@@ -64,7 +85,6 @@
                     ignoreLocation: true,
                 });
                 indexLoaded = true;
-                // If user already typed something while index was loading
                 if (input.value.trim()) runSearch(input.value.trim());
             })
             .catch(() => { /* silently ignore fetch errors */ });
@@ -145,8 +165,7 @@
 
     function buildExcerpt(content, matches, q) {
         if (!content) return '';
-        // Find a content match to anchor the excerpt window
-        const contentMatch = matches && matches.find(m => m.key === 'content');
+        const contentMatch = matches && matches.find((m) => m.key === 'content');
         let start = 0;
         if (contentMatch && contentMatch.indices.length) {
             start = Math.max(0, contentMatch.indices[0][0] - 40);
@@ -154,7 +173,6 @@
         let snippet = content.slice(start, start + 160);
         if (start > 0) snippet = '…' + snippet;
         if (start + 160 < content.length) snippet += '…';
-        // Bold the query terms
         const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         snippet = escapeHtml(snippet).replace(
             new RegExp(`(${escaped})`, 'gi'),

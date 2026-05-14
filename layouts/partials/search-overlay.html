@@ -1,0 +1,20 @@
+<div class="search-overlay" id="search-overlay" aria-hidden="true">
+    <div class="search-overlay-backdrop" id="search-overlay-backdrop"></div>
+    <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search the site">
+        <div class="search-panel-input-row">
+            <svg class="search-panel-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input
+                type="search"
+                id="search-input"
+                class="search-input"
+                placeholder="Search docs, posts, anything…"
+                autocomplete="off"
+                aria-label="Search the site"
+                aria-autocomplete="list"
+                aria-controls="search-results"
+            >
+            <kbd class="search-panel-hint">esc</kbd>
+        </div>
+        <ul class="search-results" id="search-results" role="listbox" aria-label="Search results" hidden></ul>
+    </div>
+</div>
