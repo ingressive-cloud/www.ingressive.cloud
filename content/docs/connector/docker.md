@@ -8,7 +8,7 @@ tags: ['docker', 'getting started']
 # Docker
 The Ingressive Connector is distributed as a container image that you can run using your preferred container engine.
 - Not using containers? We recommend using Podman, as it's light weight and Docker compatible. 
-- Using Kubernetes? Check out the [Ingress Controller](./ingress_controller/) documentation. 
+- Using Kubernetes? Check out the [Ingress Controller](./ingress_controller.md) documentation. 
 
 ## Getting Started
 To start routing your services using the container image: 
@@ -18,7 +18,7 @@ To start routing your services using the container image:
 ![Connector Setup Page](../../images/connector-setup.png)
 1. Use the provided Docker Compose configuration to install the connector
 1. The Console will see when the Connector has connected to the Ingressive network
-1. Add a [Service](./_index#services) to your Connector
+1. Add a [Service](./_index.md#services) to your Connector
 1. Expand the Sites section to route a Site to a Connector Service
 
 

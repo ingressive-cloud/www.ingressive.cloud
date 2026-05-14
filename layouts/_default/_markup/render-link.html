@@ -1,0 +1,21 @@
+{{- $dest := .Destination -}}
+{{- $parsed := urls.Parse $dest -}}
+{{- $path := $parsed.Path -}}
+
+{{- if and (not $parsed.Scheme) (hasSuffix $path ".md") -}}
+  {{- $lookup := $path -}}
+  {{- if hasSuffix $lookup "_index.md" -}}
+    {{- $lookup = strings.TrimSuffix "_index.md" $lookup -}}
+    {{- if eq $lookup "" -}}{{- $lookup = "." -}}{{- end -}}
+  {{- else -}}
+    {{- $lookup = strings.TrimSuffix ".md" $lookup -}}
+  {{- end -}}
+  {{- with .Page.GetPage $lookup -}}
+    {{- $dest = .RelPermalink -}}
+    {{- with $parsed.Fragment -}}{{- $dest = printf "%s#%s" $dest . -}}{{- end -}}
+  {{- else -}}
+    {{- warnf "render-link: could not resolve %q from %q" $path .Page.Path -}}
+  {{- end -}}
+{{- end -}}
+
+<a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . | safeHTML }}"{{ end }}{{ if $parsed.Scheme }} rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
