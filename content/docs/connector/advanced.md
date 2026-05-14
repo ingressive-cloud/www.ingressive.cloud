@@ -1,6 +1,6 @@
 ---
 title: "Advanced"
-weight: 10
+weight: 20
 icon: "graduation-cap"
 ---
 

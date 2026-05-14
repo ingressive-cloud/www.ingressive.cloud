@@ -17,4 +17,16 @@ For the [full documentation for Ingress Controllers](./ingress_controller), incl
 ## Docker
 Docker Compose allows you to plug Ingressive simply and easily into existing legacy setups, such as existing web servers, virtual machines, or cloud VPCs. When you create a Connector in the Ingressive Console, select Docker Compose to be guided through that path. 
 
-See the [full documentation for Docker] here to get started. 
+See the [full documentation for Docker](./docker) here to get started. 
+
+## Services
+Each Connector has a list of Services that it is allowed to access. This lets you keep track of what can be seen by Ingressive, and provides a list of all endpoints that could be potentially public. 
+
+To add Services to a Connector:
+- Open the Ingressive Console
+- Click Connectors in the sidebar
+- Click on the Connector you want to configure Services for
+- Add the Service, for example `httpbin:8080` or `httpbin` or `https://www.remote.site`.
+    - To connect Services on the Connector's host, use `host.docker.internal` (`host.containers.internal` on Podman)
+- Add a Site: You can expand the "Sites" section of the Connector config, and add a Site pointing to a Service on the Connector right there. 
+
