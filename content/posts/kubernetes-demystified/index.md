@@ -1,7 +1,6 @@
 +++
 date = '2025-11-10T09:56:15+13:00'
 tags = ["Kubernetes", "tutorial"]
-category = 'Kubernetes'
 title = 'Kubernetes Demystified'
 summary = "My introduction to Kubernetes, how to run containerised applications if you're familiar with Docker."
 +++

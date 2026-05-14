@@ -1,6 +1,10 @@
 baseURL = "https://ingressive.cloud/"
-languageCode = "en-us"
 title = "Ingressive.cloud"
+enableGitInfo = true
+
+[languages]
+  [languages.en]
+    locale = "en-us"
 
 [params]
   description = "Edge Infrastructure for Kubernetes"

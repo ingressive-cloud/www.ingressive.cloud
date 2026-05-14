@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ site.Language.Lang | default "en" }}">
 <head>
 {{ partial "head.html" . }}
-{{ block "styles" . }}<link rel="stylesheet" href="/style.css">{{ end }}
+{{ block "styles" . }}<link rel="stylesheet" href="/site.css">{{ end }}
 </head>
 <body{{ block "bodyAttrs" . }}{{ end }}>
 {{ block "body" . }}{{ end }}
