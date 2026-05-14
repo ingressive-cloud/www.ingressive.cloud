@@ -1,5 +1,6 @@
 ---
 title: "IAM Reference"
+description: "Complete reference for the Ingressive IAM policy system: resource IDs, actions, effects, accounts, and users."
 weight: 10
 icon: "book-user"
 ---

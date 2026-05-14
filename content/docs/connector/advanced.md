@@ -1,5 +1,6 @@
 ---
 title: "Advanced"
+description: "Advanced Connector setups on Ingressive's self-optimising mesh network — high availability, multi-host, and routing patterns."
 weight: 20
 icon: "graduation-cap"
 ---

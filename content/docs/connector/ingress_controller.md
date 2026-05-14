@@ -1,5 +1,6 @@
 ---
 title: "Ingressive Controller"
+description: "A drop-in Kubernetes Ingress Controller that puts your cluster on the Ingressive edge — no load balancers, no cert-manager, no exposed ports."
 weight: 10
 icon: "ship-wheel"
 ---

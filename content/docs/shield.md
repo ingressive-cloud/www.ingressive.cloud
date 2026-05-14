@@ -1,5 +1,6 @@
 ---
 title: "Shield"
+description: "Ingressive Shield is access and bot control at the edge — challenge traffic, block bots, and gate routes with SSO or password protection."
 weight: 10
 icon: shield
 ---

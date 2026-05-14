@@ -1,5 +1,6 @@
 ---
 title: "Sites"
+description: "Sites group your hostnames and routing rules into a single Ingressive resource. Learn how to configure Sites and their Locations."
 weight: 10
 icon: panels-top-left
 ---

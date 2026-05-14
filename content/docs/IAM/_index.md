@@ -1,5 +1,6 @@
 ---
 title: "IAM"
+description: "Policy-based Identity and Access Management for Ingressive Cloud — control who can do what across accounts, domains, sites, and records."
 weight: 30
 icon: "shield-user"
 ---

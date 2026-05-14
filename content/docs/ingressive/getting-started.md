@@ -1,5 +1,6 @@
 ---
 title: "Getting Started"
+description: "Get from zero to traffic on Ingressive in about five minutes — register, add a domain, install a Connector, and create your first Site."
 weight: 10
 icon: "graduation-cap"
 ---

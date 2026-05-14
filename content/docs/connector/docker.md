@@ -1,5 +1,6 @@
 ---
 title: "Docker"
+description: "Run the Ingressive Connector as a container with Docker or Podman to route services from any host onto the Ingressive edge."
 weight: 10
 icon: "boxes"
 tags: ['docker', 'getting started']

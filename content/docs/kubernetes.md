@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes"
+description: "How Ingressive integrates with Kubernetes — a primer covering the platform plus the bits you need to run a cluster on the Ingressive edge."
 weight: 10
 icon: "ship-wheel"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Connectors"
+description: "Ingressive Connectors join your origin servers to our global self-healing mesh network. Run them on Kubernetes, Docker, or any host."
 weight: 10
 icon: "workflow"
 ---

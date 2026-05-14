@@ -1,5 +1,6 @@
 ---
 title: "Domains"
+description: "Bring your top-level domain to Ingressive. We handle DNS, certificates, and traffic routing across our global edge network."
 weight: 10
 icon: "globe"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Glossary"
+description: "Definitions for the core Ingressive concepts: Accounts, Domains, Connectors, Sites, Locations, Services, and the mental model that ties them together."
 weight: 10
 icon: "book-search"
 ---
