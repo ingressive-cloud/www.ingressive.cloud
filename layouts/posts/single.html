@@ -2,16 +2,20 @@
 <article class="posts-article docs-article">
     <div class="post-header">
         <h1>{{ .Title }}</h1>
+        {{ if or (not .Date.IsZero) .Params.tags }}
         <div class="post-meta">
+            {{ if not .Date.IsZero }}
             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ end }}
             {{ with .Params.tags }}
             <span class="post-tags">
                 {{ range . }}<a href="/tags/{{ . | urlize }}/" class="post-tag">{{ . }}</a>{{ end }}
             </span>
             {{ end }}
         </div>
-        
-        {{ with .Description }}<p class="post-lead">{{ . }}</p>{{ end }}
+        {{ end }}
+
+        {{ with .Description | default .Params.summary }}<p class="post-lead">{{ . }}</p>{{ end }}
     </div>
 
     {{ if .TableOfContents }}

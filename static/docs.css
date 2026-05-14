@@ -471,6 +471,16 @@ header nav a:hover { color: var(--text-color); }
 
 .docs-article strong { color: var(--text-color); font-weight: 600; }
 
+.docs-article img,
+.posts-article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
 /* ── Blockquote (tips / notes) ───────────────────────────────────────────── */
 .docs-article blockquote {
     border-left: 3px solid var(--accent-color);
@@ -674,18 +684,35 @@ footer {
 }
 
 .post-card {
+    position: relative;
     display: block;
     padding: 1.5rem 1.75rem;
     background: var(--secondary-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    text-decoration: none;
     transition: border-color 0.2s, background 0.2s;
 }
 
 .post-card:hover {
     border-color: rgba(118, 87, 255, 0.5);
     background: rgba(118, 87, 255, 0.07);
+}
+
+.post-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.post-card > *:not(.post-card-link) {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.post-card .post-tag {
+    pointer-events: auto;
 }
 
 .post-card-meta {

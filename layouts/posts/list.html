@@ -6,19 +6,25 @@
 
 <div class="posts-grid">
     {{ range .Pages.ByDate.Reverse }}
-    <a href="{{ .RelPermalink }}" class="post-card">
+    {{ $desc := .Description | default .Params.summary }}
+    <article class="post-card">
+        <a href="{{ .RelPermalink }}" class="post-card-link" aria-label="{{ .Title }}"></a>
+        {{ if or (not .Date.IsZero) .Params.tags }}
         <div class="post-card-meta">
+            {{ if not .Date.IsZero }}
             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ end }}
             {{ with .Params.tags }}
             <span class="post-card-tags">
                 {{ range . }}<a href="/tags/{{ . | urlize }}/" class="post-tag">{{ . }}</a>{{ end }}
             </span>
             {{ end }}
         </div>
+        {{ end }}
         <h2 class="post-card-title">{{ .Title }}</h2>
-        <p class="post-card-desc">{{ .Description | default (.Summary | plainify | truncate 160 "…") }}</p>
+        {{ with $desc }}<p class="post-card-desc">{{ . }}</p>{{ end }}
         <span class="post-card-read">Read more →</span>
-    </a>
+    </article>
     {{ else }}
     <p style="color: var(--text-muted); padding: 2rem 0;">No posts yet. Check back soon.</p>
     {{ end }}
