@@ -7,6 +7,10 @@ icon: shield
 
 # Shield
 
+{{< callout type="warning" >}}
+Shield and WAF are currently a work in progress. Please tell us your actual requirements in the Discord.
+{{< /callout >}}
+
 **Ingressive Shield** is our Access and Bot Control system. It is available to all users of Ingressive. Shield can be configured to:
 - **Challenge Traffic**: You can challenge all traffic, or use our smart bot protection to only challenge suspicious traffic.
 - **Password Protect Routes**: You can set up a Shield config to require one of a list of passwords or sign in with SSO to access specific routes (such as `/admin/`).
