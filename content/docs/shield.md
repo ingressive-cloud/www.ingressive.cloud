@@ -31,4 +31,4 @@ Ingressive allows you to set up a multiple Shield configurations, then in turn a
 1. In the Ingressive Console, click [Shield](https://console.ingressive.cloud/shield).
 1. Click "Create Shield Config"
 1. Select your protection type: `JavaScript`, `Captcha` or `Block`.
-1. Set up Access Control. Currently, only shared passwords are supported. Please {{< request-access "tell us about your project" >}} and we will add what suits your needs.
+1. Set up Access Control. Currently, only shared passwords are supported. Please {{< join-discord "tell us about your project on Discord" >}} and we will add what suits your needs.

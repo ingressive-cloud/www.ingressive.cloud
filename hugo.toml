@@ -9,7 +9,7 @@ enableGitInfo = true
 [params]
   description = "Edge Infrastructure for Kubernetes"
   consoleURL = "https://console.ingressive.cloud/login"
-  requestAccessURL = "https://docs.google.com/forms/d/e/1FAIpQLSfjBP1u0hZS1em2fKvpl6JYMsGdRcNwJaCYaOIz1lDMVmm-0w/viewform"
+  discordURL = "/discord"
 
 [menu]
   [[menu.main]]

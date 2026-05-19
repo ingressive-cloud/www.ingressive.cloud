@@ -183,6 +183,7 @@ header nav a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     padding: 0.875rem 2rem;
     border-radius: 8px;
     font-weight: 600;
@@ -192,6 +193,12 @@ header nav a:hover {
     border: none;
     font-family: var(--font-main);
     text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn .discord-icon {
+    width: 1.2em;
+    height: 1.2em;
 }
 
 .btn-primary {
