@@ -329,14 +329,49 @@ header nav a:hover { color: var(--text-color); }
 .docs-toc #TableOfContents a:hover { color: var(--text-color); border-bottom: none !important; }
 .docs-toc #TableOfContents a.active { color: var(--accent-color); font-weight: 600; }
 
-/* ── TOC (inline, blog posts) ────────────────────────────────────────────── */
+/* ── TOC (inline, blog posts — mobile only, collapsed) ─────────────────────── */
 .post-toc {
-    margin-bottom: 2.5rem;
-    padding: 1.25rem 1.5rem;
+    display: none;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1.25rem;
     background: var(--secondary-bg);
     border: 1px solid var(--border-color);
     border-radius: 10px;
 }
+
+.post-toc[open] {
+    padding-bottom: 1rem;
+}
+
+.post-toc > summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-muted);
+}
+
+.post-toc > summary::-webkit-details-marker { display: none; }
+
+.post-toc > summary::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid currentColor;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: transform 0.15s ease;
+}
+
+.post-toc[open] > summary::before { transform: rotate(90deg); }
 
 .post-toc #TableOfContents ul {
     list-style: none;
@@ -613,6 +648,7 @@ footer {
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1200px) {
     .docs-toc { display: none; }
+    .post-toc { display: block; }
 }
 
 @media (max-width: 900px) {
@@ -660,6 +696,23 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 3rem 2rem;
+}
+
+/* Widen container on single posts to make room for the right-side TOC */
+.posts-main:has(.posts-single-wrap) {
+    max-width: 1120px;
+}
+
+.posts-single-wrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.posts-single-wrap > .posts-article {
+    flex: 0 1 720px;
+    min-width: 0;
 }
 
 .posts-header { margin-bottom: 2.5rem; }

@@ -1,8 +1,7 @@
 ---
 title: "This Week at Ingressive 1"
 date: 2026-05-14T09:19:54+12:00
-draft: true
-description: "Recapping what I got up to this week"
+description: "Progress report: Edge networking, Connectors working, and the magic edge network"
 tags: ["this week"]
 ---
 # This Week At Ingressive - Week 1

@@ -1,30 +1,39 @@
 {{ define "main" }}
-<article class="posts-article docs-article">
-    <div class="post-header">
-        <h1>{{ .Title }}</h1>
-        {{ if or (not .Date.IsZero) .Params.tags }}
-        <div class="post-meta">
-            {{ if not .Date.IsZero }}
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+<div class="posts-single-wrap">
+    <article class="posts-article docs-article">
+        <div class="post-header">
+            <h1>{{ .Title }}</h1>
+            {{ if or (not .Date.IsZero) .Params.tags }}
+            <div class="post-meta">
+                {{ if not .Date.IsZero }}
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                {{ end }}
+                {{ with .Params.tags }}
+                <span class="post-tags">
+                    {{ range . }}<a href="/tags/{{ . | urlize }}/" class="post-tag">{{ . }}</a>{{ end }}
+                </span>
+                {{ end }}
+            </div>
             {{ end }}
-            {{ with .Params.tags }}
-            <span class="post-tags">
-                {{ range . }}<a href="/tags/{{ . | urlize }}/" class="post-tag">{{ . }}</a>{{ end }}
-            </span>
-            {{ end }}
+
+            {{ with .Description | default .Params.summary }}<p class="post-lead">{{ . }}</p>{{ end }}
         </div>
+
+        {{ if .TableOfContents }}
+        <details class="post-toc">
+            <summary>On this page</summary>
+            {{ .TableOfContents }}
+        </details>
         {{ end }}
 
-        {{ with .Description | default .Params.summary }}<p class="post-lead">{{ . }}</p>{{ end }}
-    </div>
+        {{ .Content }}
+    </article>
 
     {{ if .TableOfContents }}
-    <nav class="post-toc" aria-label="Table of contents">
+    <aside class="docs-toc" aria-label="On this page">
         <p class="docs-toc-title">On this page</p>
         {{ .TableOfContents }}
-    </nav>
+    </aside>
     {{ end }}
-
-    {{ .Content }}
-</article>
+</div>
 {{ end }}

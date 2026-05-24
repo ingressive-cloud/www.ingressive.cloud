@@ -111,6 +111,16 @@ header nav a:hover {
     font-weight: 600;
 }
 
+.discord-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.discord-link .discord-icon {
+    width: 1.2em;
+    height: 1.2em;
+}
+
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 #hero {
     position: relative;
