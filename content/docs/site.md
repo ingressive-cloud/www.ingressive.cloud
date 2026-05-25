@@ -18,3 +18,6 @@ Locations allow you to have different configurations for various paths on your s
 - Prefix `/api` - Pointed to your production API in your Kubernetes cluster
 - Prefix `/` - Pointed to an Nginx container containing your built frontend and static assets
 - Extensions `jpg|css|js|svg|etc` - Pointed to your static assets container, with a 7d edge expiry 
+
+## Creating a Site
+If you're using a [connector](./connector/), you will be guided through the process of connecting a Site to a connector. 
