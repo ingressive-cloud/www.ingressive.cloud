@@ -14,7 +14,7 @@ If you want to try any of these advanced setups, we'd advise contacting the Ingr
 ## Global Load Balancing
 It's possible to install the Connector in multiple global locations. Ingressive will automatically route traffic to the closest one. 
 
-You **must*** ensure the service names used are *all* available to *all* instances of the Connector.
+You ***must*** ensure the service names used are *all* available to *all* instances of the Connector.
 
 ### With Docker
 Install the Connector once, it will generate a persistent configuration file. Copy this configuration file to another server, then start another instance of Connector. It will pick up the configuration and begin serving traffic. 

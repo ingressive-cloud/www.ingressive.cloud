@@ -6,7 +6,7 @@ icon: "server"
 ---
 # Getting Started on a Server
 
-So, you've got a server, VPS, or just your laptop. It has an app running, now you want people to be able to use it. You've come to the right place. 
+You've got a server, VPS, or just your laptop. It has an app running, now you want people to be able to use it. You've come to the right place. 
 
 ## Overview
 Ingressive allows you to install a piece of software called a connector. This software manages the connection between Ingressive and the server without any further requirements. The basic process is as follows:
@@ -24,6 +24,8 @@ The [Ingressive Console](https://console.ingressive.com) guides you through sett
 
 The connector can be configured to connect to any service the machine can access. Only configure appropriate services and think about what can be configured later.
 {{</callout>}}
+
+Here are the exact steps:
 
 1. Open the [Ingressive Console](https://console.ingressive.cloud)
 1. Click Connectors
@@ -62,3 +64,10 @@ The connector can be configured to connect to any service the machine can access
 1. Now the connector is up: 
 
 The connector page guides you through creating services, and connecting sites to them. 
+
+## See Also
+The [Connector](../connector/) docuementation.
+
+
+
+## Troubleshooting 

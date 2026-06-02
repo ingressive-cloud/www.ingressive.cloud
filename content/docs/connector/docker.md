@@ -7,10 +7,19 @@ tags: ['docker', 'getting started']
 ---
 # Docker
 The Ingressive Connector is distributed as a container image that you can run using your preferred container engine.
-- Not using containers? We recommend using Podman, as it's light weight and Docker compatible. 
-- Using Kubernetes? Check out the [Ingress Controller](./ingress_controller.md) documentation. 
+- Not using containers? You are now. `apt install podman podman-compose` immediately.  
+- Using Kubernetes? You want the [Ingress Controller](./ingress_controller.md) documentation. 
 
 ## Getting Started
+To get started with the Connector you need to know three things.
+- **Connectors** (here). A container you install on your origin so Ingressive can pass traffic in.
+- **Services** allow a connector to reach a given host. Localhost, another container, or another host on the network.
+- **Sites** are how you point websites at these *services*. This is where you configure caching, Access Control, anything else you expect Ingress to do.
+
+To get started, open the [Ingressive Console](https://console.ingressive.cloud), hit Add, hit Origin. The Console will guide you through installation, adding services, then connecting sites. 
+
+Here are the full steps:
+
 To start routing your services using the container image: 
 1. Open the [Ingressive Console](https://console.ingressive.cloud)
 1. Click Connectors in the side bar. 
@@ -22,13 +31,12 @@ To start routing your services using the container image:
 1. Expand the Sites section to route a Site to a Connector Service
 
 
-## Troubleshooting
+## Networking
+Remember, the Connector is a container on your machine. `localhost` points to the local *container*, not the host. 
 
-### Can't Connect to `host.docker.internal`
+You can fix this by using `host.docker.internal`, which is nearly always connected. If not, try adding these lines to your Docker Compose
 
-By default, many container engines don't configure access to the host.
 
-You may need to modify your Docker Compose file on certain platforms. 
 ```yaml
 services:
   connector:
@@ -37,3 +45,13 @@ services:
 ```
 
 Podman Compose uses `host.containers.internal` by default. 
+
+### Host Mode
+You can also set the container to `network_mode: "host"`. This allows the Connector to use `localhost`, but it also gives the container access to everything your computer can access.
+```yaml
+services:
+  connector:
+    network_mode: "host"
+```
+Try using `host.docker.internal` first, try this as a fallback. 
+
