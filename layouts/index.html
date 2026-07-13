@@ -10,11 +10,17 @@
     <main id="hero">
         <div class="hero-split">
             <div class="hero-content">
-                <h1>The Edge Infrastructure Platform for Kubernetes</h1>
-                <p>Ingressive gives you superpowers right at the edge. Just&nbsp;tell us where to send traffic. We handle everything else.</p>
+                <h1>Your Edge Infrastructure Platform</h1>
+                <p>Ingressive handles CDN, DNS and Access Control. Just bring your server, Kubernetes, or existing sites. No open ports, no worries.</p>
+
+                <p>Join the Discord to request access to our private beta.</p>
                 <div class="actions">
                     <a href="{{ .Site.Params.discordURL }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">{{ partial "discord-icon.html" . }}Join Discord</a>
-                    <a href="/docs/" class="btn btn-secondary">View Docs →</a>
+                    <a href="/docs/" class="btn btn-secondary"><i data-lucide="book-open"></i>Docs</a>
+                    <a href="/docs/connector/" class="btn btn-secondary"><i data-lucide="workflow"></i>Connector</a>
+                    <a href="/docs/connector/ingress_controller/" class="btn btn-secondary"><i data-lucide="ship-wheel"></i></a>
+
+
                 </div>
             </div>
             <div class="hero-illustration">

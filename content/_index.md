@@ -1,4 +1,4 @@
 ---
 title: "Ingressive.cloud"
-description: "Edge Infrastructure for Kubernetes"
+description: "Your managed edge infrastructure. Ingressive manages and secures your traffic, then sends it anywhere. Servers, Kubernetes clusters, or existing sites."
 ---

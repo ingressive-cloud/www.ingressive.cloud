@@ -20,4 +20,4 @@ Locations allow you to have different configurations for various paths on your s
 - Extensions `jpg|css|js|svg|etc` - Pointed to your static assets container, with a 7d edge expiry 
 
 ## Creating a Site
-If you're using a [connector](./connector/), you will be guided through the process of connecting a Site to a connector. 
+If you're using a [connector](./connector/), you will be guided through the process of connecting a Site to a connector.
